@@ -1,6 +1,28 @@
 #!/bin/bash 
-# We are using the bash shell
+# We are using the Bash shell
 
-#He is my first script a macchanger
+# Here is my first script: a MAC changer
+ This is a basic version
 
+# First check your interfaces with 
+ifconfig
+
+# It should show eth0, wlan0, or whatever interfaces are on your machine
+
+# "ip a" is another way to check
+
+# I'm using eth0 and turning that interface off
+ip link set eth0 down 
+
+# Then using macchanger -r command to change the MAC
+macchanger eth0 -r 
+
+# Then bring the interface back up
+ip link set eth0 up 
+
+# Then you're all done
+
+# After run the command sudo chmod 700 macchanger then sudo bash macchanger or sudo ./macchanger
+
+# MAC Changer V2 will add echo commands and variables and we will be piping and using grep 
 
