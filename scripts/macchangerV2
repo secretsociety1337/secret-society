@@ -1,0 +1,48 @@
+#!/usr/bin/env bash
+
+# I used #!/usr/bin/env bash instead of #!/bin/bash if it does not work for you if thats not where it is located on your host im using Kali Linux
+
+echo "Welcome to Secret's MAC Changer!"
+sleep 1
+echo "[*] Changing Your MAC Address [*]"
+
+# echo prints to the screen similar to print("Hello World") in Python
+# Sleep makes the script wait for a second for dramatic effect 
+
+ifconfig | grep -oE "^(wlan|eth)[0-9]+"
+
+# first ifconfig list all interfaces and then pipe | takes that info gives it to grep and grep filters and  only prints the matching part -o -E allows thing like + it gives extended regex 
+
+read -rp "Choose your interface: " iface
+
+#read -p tells bash to prompt and take in the input and save it into a variable iface the -r turns on raw mode prevents backslash from being interpreted as escape characters 
+
+echo "[*] Turning off "$iface".... [*]"
+sleep 1
+ip link set "$iface" down
+# ip link set <interface> down turns off an interface so you can change the MAC 
+
+echo "[*] Changing "$iface" MAC Address [*}" 
+macchanger -r "$iface"
+# macchanger -r <interface> gives your interface a random MAC Address
+
+echo "[*] Turning on "$iface".... [*]"
+sleep 1 
+ip link set "$iface" up
+
+sleep 2
+
+echo "Your MAC Address has been changed!"
+
+# Do not forget to change the file permissions so you can execute the file 
+# sudo chmod 500 macchangerV2
+
+# File permissions Tips
+# 0 = no privileges
+# 1 = execute 
+# 2 = write 
+# 4 = read 
+# So 5 = read + execute (4 + 1 =5)
+# and 500 means that you can read and execute and everyone else can not do anything 
+
+
