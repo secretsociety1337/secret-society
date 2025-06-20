@@ -10,14 +10,14 @@ It currently operates as a basic reverse shell and will evolve to include featur
 -System enumeration
 -Persistence 
 
-<Disclaimer>
+🚫Disclaimer🚫
 This tool is intended strictly for educational purposes,ethical hacking labs and authorized penetration testing on systems you own or have explicit permission to test.
 Unauthorized use is illegal and goes against the purpose of this project.
 
 I used the loopback address and 2 different terminals to test this out.
  
 Don't forget to make both files executable by using: 
-sudo chmod +x  <filename> 
+sudo chmod +x  filename 
 
 To execute the files use:
 python3 <filename>
